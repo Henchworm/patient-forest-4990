@@ -26,7 +26,6 @@ RSpec.describe "the studio index page" do
     expect(page).to have_content('Raiders of the Lost Ark')
     expect(page).to have_content('Shrek')
     expect(page).to have_content('Space Cop')
-    save_and_open_page
   end
 
 
