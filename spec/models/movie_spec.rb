@@ -21,7 +21,7 @@ RSpec.describe Movie, type: :model do
       raiders = universal.movies.create!(title: 'Raiders of the Lost Ark', creation_year: 1981, genre: 'Action/Adventure')
       harrison = raiders.actors.create!(name: 'Harrison Ford', age: 100 )
       karen = raiders.actors.create!(name:'Karen Allen', age: 50)
-      expect(raiders.average_age).to eq('75.0')
+      expect(raiders.average_age).to eq(75)
     end
   end
 end
