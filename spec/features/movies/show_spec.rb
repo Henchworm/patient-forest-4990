@@ -81,7 +81,6 @@ RSpec.describe 'the movie show page' do
     click_button("Submit")
     expect(page).to have_content(johnny_extra.name)
     expect(page).to have_content(johnny_extra.age)
-    save_and_open_page
   end
 end
 
