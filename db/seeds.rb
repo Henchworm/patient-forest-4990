@@ -1,4 +1,5 @@
 universal = Studio.create!(name: 'Universal Studios', location: 'Hollywood')
-
-universal.movies.create!(title: 'Raiders of the Lost Ark', creation_year: 1981, genre: 'Action/Adventure')
-universal.movies.create!(title: 'Shrek', creation_year: 2001, genre: 'Horror')
+raiders = universal.movies.create!(title: 'Raiders of the Lost Ark', creation_year: 1981, genre: 'Action/Adventure')
+harrison = raiders.actors.create!(name: 'Harrison Ford', age: 100 )
+karen = raiders.actors.create!(name:'Karen Allen', age: 50)
+johnny_extra = Actor.create!(name:'Johnny Extra', age: 18)
