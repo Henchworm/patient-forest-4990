@@ -31,7 +31,7 @@ RSpec.describe Movie, type: :model do
       karen = raiders.actors.create!(name:'Karen Allen', age: 50)
       johnny_extra = Actor.create!(name:'Johnny Extra', age: 18)
       raiders.add_actor(johnny_extra)
-      expect(universal.actors).to eq([harrison, karen, johnny_extra])
+      expect(raiders.actors).to eq([harrison, karen, johnny_extra])
     end
   end
 end

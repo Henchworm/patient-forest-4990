@@ -20,6 +20,8 @@ RSpec.describe 'the movie show page' do
     visit "/movies/#{raiders.id}"
     expect(page).to have_content(karen.name)
     expect(page).to have_content(harrison.name)
+    expect(page).to have_content(karen.age)
+    expect(page).to have_content(harrison.age)
   end
 
   it "shows the active age of all the actors" do
@@ -58,14 +60,31 @@ RSpec.describe 'the movie show page' do
     raiders = universal.movies.create!(title: 'Raiders of the Lost Ark', creation_year: 1981, genre: 'Action/Adventure')
     harrison = raiders.actors.create!(name: 'Harrison Ford', age: 100 )
     karen = raiders.actors.create!(name:'Karen Allen', age: 50)
+    johnny_extra = Actor.create!(name:'Johnny Extra', age: 18)
+
     visit "/movies/#{raiders.id}"
-    fill_in :name, with: "Johnny Depp"
-    fill_in :name, with: "50"
+    fill_in :name, with: "Johnny Extra"
+    fill_in :age, with: "18"
+    click_button("Submit")
     expect(current_path).to eq("/movies/#{raiders.id}")
   end
 
-
-
+  it "can add and display a new actor" do
+    universal = Studio.create!(name: 'Universal Studios', location: 'Hollywood')
+    raiders = universal.movies.create!(title: 'Raiders of the Lost Ark', creation_year: 1981, genre: 'Action/Adventure')
+    harrison = raiders.actors.create!(name: 'Harrison Ford', age: 100 )
+    karen = raiders.actors.create!(name:'Karen Allen', age: 50)
+    johnny_extra = Actor.create!(name:'Johnny Extra', age: 18)
+    visit "/movies/#{raiders.id}"
+    fill_in :name, with: "Johnny Extra"
+    fill_in :age, with: 18
+    click_button("Submit")
+    expect(page).to have_content(johnny_extra.name)
+    expect(page).to have_content(johnny_extra.age)
+    save_and_open_page
+  end
 end
+
+
 
 

@@ -12,8 +12,7 @@ class Movie < ApplicationRecord
   end
 
   def add_actor(new_actor)
-    actor = Actor.all.find(new_actor.id)
-    self.actors << actor
+    self.actors << new_actor
   end
 
 end
